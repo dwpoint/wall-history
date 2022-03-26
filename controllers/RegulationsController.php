@@ -13,7 +13,7 @@ class RegulationsController extends SiteController
     public function actionPravilo() {
         if (Yii::$app->request->isAjax){
           var_dump(Yii::$app->request->post());
-          return 'данные получены';
+          return 'Пост опубликован';
         }
         $model = new Post();
         $ip = Yii::$app->request->userIP;
