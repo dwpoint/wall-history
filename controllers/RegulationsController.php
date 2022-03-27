@@ -4,9 +4,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\Post;
-use app\models\BdModel;
 use yii\db\ActiveRecord;
-class RegulationsController extends SiteController
+class RegulationsController extends Controller
 {
 
     public static function tableName(){
