@@ -12,7 +12,7 @@ class RegulationsController extends Controller
         return 'post';
     }
 
-    public function actionPravilo() {
+    public function actionIndex() {
         if (Yii::$app->request->isAjax){
           var_dump(Yii::$app->request->post());
           return 'Пост опубликован';
@@ -38,7 +38,7 @@ class RegulationsController extends Controller
 
         $posts = post::find()->orderBy(['time' => SORT_DESC])->all();
 
-        return $this->render('pravilo', compact('model', 'posts'));
+        return $this->render('index', compact('model', 'posts'));
     }
 
     public function actionRule() {
