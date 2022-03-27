@@ -5,10 +5,13 @@ use Yii;
 use yii\web\Controller;
 use app\models\Post;
 use app\models\BdModel;
-
+use yii\db\ActiveRecord;
 class RegulationsController extends SiteController
 {
 
+    public static function tableName(){
+        return 'post';
+    }
 
     public function actionPravilo() {
         if (Yii::$app->request->isAjax){
@@ -17,7 +20,7 @@ class RegulationsController extends SiteController
         }
         $model = new Post();
         $ip = Yii::$app->request->userIP;
-        $last_post_guest = BdModel::find()->asArray()->where(['ip' => $ip])->orderBy(['time' => SORT_DESC])->one();
+        $last_post_guest = post::find()->asArray()->where(['ip' => $ip])->orderBy(['time' => SORT_DESC])->one();
         $last_time_post = (int)$last_post_guest['time'];
             if ($model->load(Yii::$app->request->post())) {
                 $model->ip = $ip;
@@ -34,7 +37,7 @@ class RegulationsController extends SiteController
                 }
             };
 
-        $posts = BdModel::find()->orderBy(['time' => SORT_DESC])->all();
+        $posts = post::find()->orderBy(['time' => SORT_DESC])->all();
 
         return $this->render('pravilo', compact('model', 'posts'));
     }
