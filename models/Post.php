@@ -1,14 +1,18 @@
 <?php
+
 namespace app\models;
+
 use yii\db\ActiveRecord;
 use yii\captcha\CaptchaAction;
 
-class Post extends ActiveRecord{
+class Post extends ActiveRecord
+{
     /*public $name;
     public $text;*/
     public $captcha;
 
-    public function attributeLabels(){
+    public function attributeLabels()
+    {
         return [
             'name' => 'Автор',
             'text' => 'Сообщение',
@@ -16,11 +20,12 @@ class Post extends ActiveRecord{
         ];
     }
 
-    public function rules(){
+    public function rules()
+    {
         return [
-            [['name','text','captcha'], 'required'],
-            ['name', 'string', 'length' => [2,15]],
-            ['text', 'string', 'length' => [30,1000]],
+            [['name', 'text', 'captcha'], 'required'],
+            ['name', 'string', 'length' => [2, 15]],
+            ['text', 'string', 'length' => [30, 1000]],
             ['captcha', 'trim'],
             /*['name', 'MyRule'],*/
             ['captcha', 'captcha']
@@ -33,4 +38,5 @@ class Post extends ActiveRecord{
         }
     }*/
 }
+
 ?>
