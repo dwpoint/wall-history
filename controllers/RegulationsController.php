@@ -5,7 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\Post;
-use yii\db\ActiveRecord;
+use yii\data\ActiveDataProvider;
+
 
 class RegulationsController extends Controller
 {
@@ -40,15 +41,35 @@ class RegulationsController extends Controller
             }
         };
 
+
+
         $posts = Post::find()->orderBy(['time' => SORT_DESC])->all();
 
-        return $this->render('index', compact('model', 'posts'));
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::find()->orderBy(['time' => SORT_DESC]),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+
+
+        return $this->render('index', compact('model', 'posts', 'dataProvider'));
     }
 
     public function actionRule()
     {
-        $g = 'hello';
-        return $this->render('rule', compact('g'));
+        return $this->render('rule');
+    }
+    public function actionGrid()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::find()->orderBy(['time' => SORT_DESC]),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+
+        return $this->render('grid', 'dataProvider');
     }
 
 

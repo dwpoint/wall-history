@@ -3,7 +3,6 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
-use yii\captcha\CaptchaAction;
 
 class Post extends ActiveRecord
 {
