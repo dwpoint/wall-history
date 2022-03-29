@@ -40,7 +40,7 @@ class RegulationsController extends Controller
             }
         };
 
-        $posts = post::find()->orderBy(['time' => SORT_DESC])->all();
+        $posts = Post::find()->orderBy(['time' => SORT_DESC])->all();
 
         return $this->render('index', compact('model', 'posts'));
     }
