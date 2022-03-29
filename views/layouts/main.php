@@ -39,6 +39,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'История', 'url' => ['regulations/']],
             ['label' => 'Правила', 'url' => ['regulations/rule']],
+            ['label' => 'Grid', 'url' => ['regulations/grid']],
         ],
     ]);
     NavBar::end();

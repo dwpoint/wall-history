@@ -68,8 +68,7 @@ class RegulationsController extends Controller
                 'pageSize' => 10,
             ],
         ]);
-
-        return $this->render('grid', 'dataProvider');
+        return $this->render('grid', compact('dataProvider'));
     }
 
 
