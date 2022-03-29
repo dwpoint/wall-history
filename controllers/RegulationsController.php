@@ -70,6 +70,15 @@ class RegulationsController extends Controller
         ]);
         return $this->render('grid', compact('dataProvider'));
     }
+    public function actionView()
+    {
+        $request = Yii::$app->request;
+        $id = $request->get('id', 1);
+        $model = Post::find()->where(['id' => $id])->one(); // запрос на выборку записи
+        return $this->render('view', [
+            'model' => $model // возвращаем данные в представление
+        ]);
+    }
 
 
 }

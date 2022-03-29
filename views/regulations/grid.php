@@ -23,7 +23,7 @@ use yii\grid\GridView;
             ],
 
 
-            /*['class' => 'yii\grid\ActionColumn'],*/
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
