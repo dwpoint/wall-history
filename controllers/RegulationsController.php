@@ -23,7 +23,7 @@ class RegulationsController extends Controller
         }
         $model = new Post();
         $ip = Yii::$app->request->userIP;
-        $last_post_guest = post::find()->asArray()->where(['ip' => $ip])->orderBy(['time' => SORT_DESC])->one();
+        $last_post_guest = Post::find()->asArray()->where(['ip' => $ip])->orderBy(['time' => SORT_DESC])->one();
         $last_time_post = (int)$last_post_guest['time'];
         if ($model->load(Yii::$app->request->post())) {
             $model->ip = $ip;
