@@ -1,5 +1,17 @@
 <?php
+
+use app\helper\IpHelper;
+use app\models\Post;
 use yii\grid\GridView;
+use yii\data\ActiveDataProvider;
+use yii\web\View;
+
+/**
+ * @var $dataProvider ActiveDataProvider;
+ * @var $this View
+ */
+
+$this->title = "GridView";
 ?>
 <div class="row">
 
@@ -8,22 +20,23 @@ use yii\grid\GridView;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute' => 'name',
-                'format' => 'text'
-            ],
-            [
-                'attribute' => 'text',
-                'format' => 'text'
-            ],
+            'name',
+            'text:ntext',
             [
                 'attribute' => 'time',
                 'label' => 'Время',
                 'format' => ['date', 'php:Y-m-d']
             ],
-
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'label' => 'ip',
+                'value' => function (Post $model) {
+                    return IpHelper::hide($model->ip);
+                }
+            ],
+            [
+                'class' => \yii\grid\ActionColumn::class,
+                'template' => '{view}',
+            ],
         ],
     ]); ?>
 </div>

@@ -42,9 +42,6 @@ class RegulationsController extends Controller
         };
 
 
-
-        $posts = Post::find()->orderBy(['time' => SORT_DESC])->all();
-
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->orderBy(['time' => SORT_DESC]),
             'pagination' => [
@@ -53,7 +50,7 @@ class RegulationsController extends Controller
         ]);
 
 
-        return $this->render('index', compact('model', 'posts', 'dataProvider'));
+        return $this->render('index', compact('model', 'dataProvider'));
     }
 
     public function actionRule()
@@ -83,4 +80,3 @@ class RegulationsController extends Controller
 
 }
 
-?>

@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * @var $dataProvider ActiveDataProvider
+ * @var $model Post
+ * @var $this View
+ */
+
+use app\models\Post;
+use yii\data\ActiveDataProvider;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\captcha\Captcha;
-use yii\helpers\HtmlPurifier;
 use yii\widgets\ListView;
+
+$this->title = "History";
+
 ?>
+
 
 
 <div class="row">
@@ -18,11 +30,9 @@ use yii\widgets\ListView;
             'dataProvider' => $dataProvider,
             'options' => [
                 'tag' => 'div',
-                'class' => 'list-wrapper',
-                'id' => 'list-wrapper',
             ],
             'layout' => "{pager}\n{items}\n{summary}",
-            'itemView' => 'post',
+            'itemView' => '_post',
         ]);
         ?>
 

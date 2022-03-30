@@ -1,7 +1,12 @@
 <?php
 
-use yii\widgets\ActiveForm;
-use yii\helpers\Html;
+/**
+ * @var $this View
+ */
+
+use yii\web\View;
+
+$this->title = "Rule";
 
 ?>
 <br>

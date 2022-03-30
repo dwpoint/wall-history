@@ -1,25 +1,31 @@
 <?php
-use yii\db\ActiveRecord;
+
+use app\helper\IpHelper;
+use app\models\Post;
+use yii\web\View;
 use yii\widgets\DetailView;
+
+/**
+ * @var $model Post
+ * @var $this View
+ */
+$this->title = "View";
 ?>
 <div class="row">
 
+    <?php
+        $ipHelper = new IpHelper();
+    ?>
 
     <?= DetailView::widget([
         'model' => $model,
-        'attributes' => [ // атрибуты модели
-            'id', // идентификатор
-            [
-                'label' => 'name',
-                'value' => $model->name,
-            ],
-            [
-                'label' => 'text',
-                'value' => $model->text,
-            ],
+        'attributes' => [
+            'id',
+            'name',
+            'text',
             [
                 'label' => 'ip',
-                'value' => $model->ip,
+                'value' => IpHelper::hide($model->ip),
             ],
         ],
     ]); ?>

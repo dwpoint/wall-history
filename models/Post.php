@@ -4,10 +4,15 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * @property string $name
+ * @property string $text
+ * @property string $ip
+ * @property int $time
+ */
+
 class Post extends ActiveRecord
 {
-    /*public $name;
-    public $text;*/
     public $captcha;
 
     public function attributeLabels()
@@ -15,6 +20,7 @@ class Post extends ActiveRecord
         return [
             'name' => 'Автор',
             'text' => 'Сообщение',
+            'time' => 'Время',
             'captcha' => 'Код с картинки:',
         ];
     }
@@ -38,4 +44,3 @@ class Post extends ActiveRecord
     }*/
 }
 
-?>
